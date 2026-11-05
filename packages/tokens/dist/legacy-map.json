@@ -16,5 +16,6 @@
   "muted": "color.text.muted",
   "brand-candy": "color.cabinet.body",
   "btn-red": "color.action.primary",
+  "btn-red-deep": "color.action.primary-pressed",
   "shelf-wood": "color.surface.shelf"
 }

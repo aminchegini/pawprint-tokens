@@ -1,7 +1,7 @@
 {
   "$metadata": {
-    "exportedAt": "2026-11-05T14:40:51Z",
-    "figmaFileKey": ""
+    "exportedAt": "2026-11-05T15:14:01Z",
+    "figmaFileKey": "FTrMG6oKwU8Arzt3QEru59"
   },
   "primitive": {
     "color": {
@@ -828,6 +828,11 @@
       "$type": "color",
       "$value": "{semantic.color.action.primary}",
       "$deprecated": "Use color.action.primary"
+    },
+    "btn-red-deep": {
+      "$type": "color",
+      "$value": "{semantic.color.action.primary-pressed}",
+      "$deprecated": "Use color.action.primary-pressed"
     },
     "shelf-wood": {
       "$type": "color",

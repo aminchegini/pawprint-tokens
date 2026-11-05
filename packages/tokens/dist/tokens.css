@@ -65,6 +65,7 @@
   --muted: var(--color-text-muted);
   --brand-candy: var(--color-cabinet-body);
   --btn-red: var(--color-action-primary);
+  --btn-red-deep: var(--color-action-primary-pressed);
   --shelf-wood: var(--color-surface-shelf);
 }
 
@@ -132,6 +133,7 @@
   --muted: var(--color-text-muted);
   --brand-candy: var(--color-cabinet-body);
   --btn-red: var(--color-action-primary);
+  --btn-red-deep: var(--color-action-primary-pressed);
   --shelf-wood: var(--color-surface-shelf);
 }
 
@@ -199,6 +201,7 @@
   --muted: var(--color-text-muted);
   --brand-candy: var(--color-cabinet-body);
   --btn-red: var(--color-action-primary);
+  --btn-red-deep: var(--color-action-primary-pressed);
   --shelf-wood: var(--color-surface-shelf);
 }
 
@@ -266,5 +269,6 @@
   --muted: var(--color-text-muted);
   --brand-candy: var(--color-cabinet-body);
   --btn-red: var(--color-action-primary);
+  --btn-red-deep: var(--color-action-primary-pressed);
   --shelf-wood: var(--color-surface-shelf);
 }
