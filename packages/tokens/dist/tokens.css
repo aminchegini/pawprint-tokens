@@ -10,14 +10,14 @@
   --color-text-default: #fff6e8;
   --color-text-muted: #b9acd3;
   --color-text-on-accent: #2a0f3a;
-  --color-action-primary: #2563eb;
+  --color-action-primary: #ff3b30;
   --color-action-primary-pressed: #b3160e;
   --color-accent-trim: #ffd23f;
   --color-accent-trim-pressed: #b38a00;
   --color-accent-glow: #2ad4bd;
   --color-accent-glow-pressed: #139b8a;
   --color-feedback-win: #6fd36f;
-  --color-feedback-miss: #2563eb;
+  --color-feedback-miss: #ff3b30;
   --color-display-on: #ff9f1c;
   --color-display-off: #3a2208;
   --color-cabinet-body: #ff3f94;
@@ -28,7 +28,7 @@
   --color-prize-sky: #58c4ff;
   --color-prize-grape: #8f7bff;
   --color-prize-sun: #ffd23f;
-  --color-prize-cherry: #2563eb;
+  --color-prize-cherry: #ff3b30;
   --color-prize-gold: #c39a4e;
   --space-2xs: 2px;
   --space-xs: 4px;
@@ -77,7 +77,7 @@
   --color-prize-sky: #58c4ff;
   --color-prize-grape: #8f7bff;
   --color-prize-sun: #ffd23f;
-  --color-prize-cherry: #2563eb;
+  --color-prize-cherry: #ff3b30;
   --color-prize-gold: #c39a4e;
   --space-2xs: 2px;
   --space-xs: 4px;
@@ -126,7 +126,7 @@
   --color-prize-sky: #58c4ff;
   --color-prize-grape: #8f7bff;
   --color-prize-sun: #ffd23f;
-  --color-prize-cherry: #2563eb;
+  --color-prize-cherry: #ff3b30;
   --color-prize-gold: #c39a4e;
   --space-2xs: 2px;
   --space-xs: 4px;
@@ -175,7 +175,7 @@
   --color-prize-sky: #58c4ff;
   --color-prize-grape: #8f7bff;
   --color-prize-sun: #ffd23f;
-  --color-prize-cherry: #2563eb;
+  --color-prize-cherry: #ff3b30;
   --color-prize-gold: #c39a4e;
   --space-2xs: 2px;
   --space-xs: 4px;

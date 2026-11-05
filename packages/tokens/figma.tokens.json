@@ -1,6 +1,6 @@
 {
   "$metadata": {
-    "exportedAt": "2026-11-05T16:40:38Z",
+    "exportedAt": "2026-11-05T17:15:55Z",
     "figmaFileKey": "FTrMG6oKwU8Arzt3QEru59"
   },
   "primitive": {
@@ -250,7 +250,7 @@
         },
         "400": {
           "$type": "color",
-          "$value": "#2563eb"
+          "$value": "#ff3b30"
         },
         "600": {
           "$type": "color",
