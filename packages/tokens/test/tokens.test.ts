@@ -18,7 +18,7 @@ const REQUIRED_SEMANTIC = [
   'color.action.primary',
   'color.action.primary-pressed',
   'color.accent.trim',
-  'color.accent.highlight',
+  'color.accent.glow',
   'color.feedback.win',
   'color.feedback.miss',
   'color.display.on',

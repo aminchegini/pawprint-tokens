@@ -14,8 +14,8 @@
   --color-action-primary-pressed: #b3160e;
   --color-accent-trim: #ffd23f;
   --color-accent-trim-pressed: #b38a00;
-  --color-accent-highlight: #2ad4bd;
-  --color-accent-highlight-pressed: #139b8a;
+  --color-accent-glow: #2ad4bd;
+  --color-accent-glow-pressed: #139b8a;
   --color-feedback-win: #6fd36f;
   --color-feedback-miss: #ff3b30;
   --color-display-on: #ff9f1c;
@@ -63,8 +63,8 @@
   --color-action-primary-pressed: #a01a8a;
   --color-accent-trim: #ff5ce0;
   --color-accent-trim-pressed: #a01a8a;
-  --color-accent-highlight: #22e6ff;
-  --color-accent-highlight-pressed: #0a93a8;
+  --color-accent-glow: #22e6ff;
+  --color-accent-glow-pressed: #0a93a8;
   --color-feedback-win: #9be05a;
   --color-feedback-miss: #ff5a4d;
   --color-display-on: #22e6ff;
@@ -112,8 +112,8 @@
   --color-action-primary-pressed: #9c1824;
   --color-accent-trim: #f6ecd6;
   --color-accent-trim-pressed: #b5a789;
-  --color-accent-highlight: #4fb8a8;
-  --color-accent-highlight-pressed: #2f8275;
+  --color-accent-glow: #4fb8a8;
+  --color-accent-glow-pressed: #2f8275;
   --color-feedback-win: #6fd36f;
   --color-feedback-miss: #ff5a4d;
   --color-display-on: #ff5a4d;
@@ -161,8 +161,8 @@
   --color-action-primary-pressed: #561217;
   --color-accent-trim: #c39a4e;
   --color-accent-trim-pressed: #7f6329;
-  --color-accent-highlight: #e8c583;
-  --color-accent-highlight-pressed: #a98c52;
+  --color-accent-glow: #e8c583;
+  --color-accent-glow-pressed: #a98c52;
   --color-feedback-win: #3fbf8f;
   --color-feedback-miss: #d8222f;
   --color-display-on: #ffd9a0;
