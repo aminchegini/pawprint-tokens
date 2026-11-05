@@ -1,0 +1,20 @@
+{
+  "pink": "color.cabinet.body",
+  "trim": "color.accent.trim",
+  "trim-deep": "color.accent.trim-pressed",
+  "mint": "color.accent.highlight",
+  "mint-deep": "color.accent.highlight-pressed",
+  "drop": "color.action.primary",
+  "drop-deep": "color.action.primary-pressed",
+  "plum": "color.text.on-accent",
+  "led": "color.display.on",
+  "bg": "color.surface.page",
+  "panel": "color.surface.panel",
+  "card": "color.surface.card",
+  "line": "color.border.default",
+  "cream": "color.text.default",
+  "muted": "color.text.muted",
+  "brand-candy": "color.cabinet.body",
+  "btn-red": "color.action.primary",
+  "shelf-wood": "color.surface.shelf"
+}

@@ -1,0 +1,8 @@
+node_modules
+*.tgz
+.DS_Store
+
+# Build output is ignored everywhere except the tokens package, whose dist is
+# committed on purpose: CI rebuilds it and fails when the result differs.
+dist
+!/packages/tokens/dist

@@ -1,0 +1,35 @@
+{
+  "name": "@paws/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens exported from Figma variables, built with Style Dictionary into CSS custom properties, a Tailwind v4 theme and a typed map.",
+  "license": "MIT",
+  "author": "Amin Chegini",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "main": "./dist/tokens.js",
+  "types": "./dist/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./theme.css": "./dist/theme.css",
+    "./legacy-map.json": "./dist/legacy-map.json",
+    "./figma.tokens.json": "./figma.tokens.json"
+  },
+  "files": [
+    "dist",
+    "figma.tokens.json"
+  ],
+  "scripts": {
+    "build": "node build.mjs && tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.8.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
