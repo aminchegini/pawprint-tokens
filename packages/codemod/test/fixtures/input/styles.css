@@ -1,0 +1,22 @@
+:root {
+  --bg: #0c0820;
+  --pink: #ff3f94;
+  --trim: #ffd23f;
+  --trim-deep: #b38a00;
+  --pinkish: #ff99cc;
+}
+
+@property --mint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2ad4bd;
+}
+
+body { margin: 0; background: var(--bg); color: var(--muted, #ccc); }
+.card { background: var(--card); border: 1px solid var(--line); /* keep: --line in a comment */ }
+.pill.pay {
+  background: var(--trim);
+  box-shadow: 0 3px 0 var(--trim-deep), 0 0 8px color-mix(in srgb, var(--pink) 60%, transparent);
+}
+.title { color: var(--pinkish); transition: --pink 0.2s; }
+.cta { @apply bg-btn-red text-muted hover:border-line/50 px-4; }

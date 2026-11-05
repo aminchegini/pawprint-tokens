@@ -1,0 +1,11 @@
+{
+  "pink": "color.cabinet.body",
+  "trim": "color.accent.trim",
+  "trim-deep": "color.accent.trim-pressed",
+  "mint": "color.accent.highlight",
+  "bg": "color.surface.page",
+  "card": "color.surface.card",
+  "line": "color.border.default",
+  "muted": "color.text.muted",
+  "btn-red": "color.action.primary"
+}

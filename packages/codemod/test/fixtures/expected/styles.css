@@ -1,0 +1,22 @@
+:root {
+  --color-surface-page: #0c0820;
+  --color-cabinet-body: #ff3f94;
+  --color-accent-trim: #ffd23f;
+  --color-accent-trim-pressed: #b38a00;
+  --pinkish: #ff99cc;
+}
+
+@property --color-accent-highlight {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2ad4bd;
+}
+
+body { margin: 0; background: var(--color-surface-page); color: var(--color-text-muted, #ccc); }
+.card { background: var(--color-surface-card); border: 1px solid var(--color-border-default); /* keep: --line in a comment */ }
+.pill.pay {
+  background: var(--color-accent-trim);
+  box-shadow: 0 3px 0 var(--color-accent-trim-pressed), 0 0 8px color-mix(in srgb, var(--color-cabinet-body) 60%, transparent);
+}
+.title { color: var(--pinkish); transition: --color-cabinet-body 0.2s; }
+.cta { @apply bg-action-primary text-text-muted hover:border-border-default/50 px-4; }
