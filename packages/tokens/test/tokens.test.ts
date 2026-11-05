@@ -71,7 +71,8 @@ describe('figma.tokens.json', () => {
   it('has the three layers and export metadata', () => {
     expect(Object.keys(source)).toEqual(['$metadata', 'primitive', 'semantic', 'legacy']);
     expect(Number.isNaN(Date.parse(source.$metadata.exportedAt))).toBe(false);
-    expect(source.$metadata.figmaFileKey).toBe('');
+    // The file is exported from Figma, so it names the file it came from.
+    expect(source.$metadata.figmaFileKey).toMatch(/^[0-9a-zA-Z]{22,}$/);
   });
 
   it('marks every legacy alias as deprecated and pointing at a semantic token', () => {
