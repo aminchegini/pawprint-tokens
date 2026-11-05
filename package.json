@@ -1,5 +1,5 @@
 {
-  "name": "figma-token-pipeline",
+  "name": "pawprint-tokens",
   "private": true,
   "version": "0.1.0",
   "description": "Figma variables to design tokens to code, and back: tokens, UI components, a migration codemod and a Figma export plugin.",

@@ -1,4 +1,4 @@
-# figma-token-pipeline
+# pawprint-tokens
 
 An automated loop between design and code: Figma variables are exported as design tokens, the tokens are built into CSS, a Tailwind theme and a typed map, components and apps consume them, and CI checks that code and Figma have not drifted apart.
 
@@ -128,7 +128,7 @@ Pushing a `v*` tag runs `.github/workflows/release.yml`: it stamps the tag versi
 ```json
 {
   "dependencies": {
-    "@paws/tokens": "https://github.com/<owner>/figma-token-pipeline/releases/download/v0.1.0/paws-tokens-0.1.0.tgz"
+    "@paws/tokens": "https://github.com/aminchegini/pawprint-tokens/releases/download/v0.1.0/paws-tokens-0.1.0.tgz"
   }
 }
 ```
