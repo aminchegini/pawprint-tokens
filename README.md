@@ -17,6 +17,10 @@ tokens.css  theme.css  tokens.ts
                               |  @paws/codemod: legacy names -> semantic names
 ```
 
+## See it working
+
+[Thousand Paws](https://thousand-paws.vercel.app) is a 3D arcade game built on these packages ([code](https://github.com/aminchegini/thousand-paws)). Its README links to each pull request where the pipeline proved itself: a migration to 100% token parity, a rename across Figma and code that changed 0 pixels, and deliberate drift that CI rejected. The tokens come from the [Pawprint Design System](https://www.figma.com/design/FTrMG6oKwU8Arzt3QEru59/) Figma library.
+
 ## Layer model
 
 Tokens come in three layers, and each layer may only point at the one below it.
