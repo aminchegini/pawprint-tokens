@@ -127,7 +127,11 @@ Requires Node 22 or later and pnpm 10.
 
 ## Releases
 
-Pushing a `v*` tag runs `.github/workflows/release.yml`: it stamps the tag version into each package, builds, tests, runs `pnpm pack` per package and attaches the tarballs to a GitHub Release. Consumers install from those URLs:
+Merging a change to `packages/tokens/figma.tokens.json` runs `.github/workflows/release.yml`. It compares the tokens with the last release using `scripts/token-diff.mjs`, so a re-export of identical variables does nothing. If a token really changed, it bumps the minor version, builds, tests, runs `pnpm pack` per package and attaches the tarballs to a GitHub Release. Pushing a `v*` tag by hand releases that exact version.
+
+The release then opens a pull request in [thousand-paws](https://github.com/aminchegini/thousand-paws) that adopts the new version and lists the changed tokens, ready for review. That needs a `GAME_REPO_TOKEN` secret here: a fine-grained token for the game repository with read and write access to contents and pull requests. Without it the release still happens and the run shows a warning.
+
+The export itself is not automatic, because reading variables through Figma's REST API requires an Enterprise plan. Run the export plugin, or export from another Plugin API session, and merge the result.
 
 ```json
 {

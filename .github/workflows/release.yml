@@ -1,16 +1,58 @@
 name: Release
 
+# A merged export that really changes tokens becomes a new release, and then a pull
+# request in the game that adopts it. Pushing a v* tag by hand releases that version.
 on:
   push:
+    branches: [main]
+    paths: ['packages/tokens/figma.tokens.json']
     tags: ['v*']
 
 permissions:
   contents: write
 
+env:
+  TOKENS_FILE: packages/tokens/figma.tokens.json
+  GAME_REPO: aminchegini/thousand-paws
+
 jobs:
+  version:
+    name: Decide the version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.next.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          package-manager-cache: false
+      - name: Compare with the last release
+        id: next
+        run: |
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          last=$(git tag --list 'v*' --sort=-v:refname | head -1)
+          git show "$last:$TOKENS_FILE" > "$RUNNER_TEMP/before.json"
+          changes=$(node scripts/token-diff.mjs "$RUNNER_TEMP/before.json" "$TOKENS_FILE")
+          if [ -z "$changes" ]; then
+            echo "No token changed since $last, so there is nothing to release."
+            exit 0
+          fi
+          IFS=. read -r major minor _ <<< "${last#v}"
+          echo "version=$major.$((minor + 1)).0" >> "$GITHUB_OUTPUT"
+
   release:
     name: Pack and attach tarballs
+    needs: version
+    if: needs.version.outputs.version != ''
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
     steps:
       - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
@@ -19,8 +61,8 @@ jobs:
           node-version: 26
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Stamp packages with the tag version
-        run: pnpm -r --filter "./packages/*" exec npm pkg set version="${GITHUB_REF_NAME#v}"
+      - name: Stamp packages with the version
+        run: pnpm -r --filter "./packages/*" exec npm pkg set version="$VERSION"
       - run: pnpm build
       - run: pnpm test
       - name: Pack each public package
@@ -31,4 +73,73 @@ jobs:
       - name: Create the GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" "$RUNNER_TEMP"/tarballs/*.tgz --title "$GITHUB_REF_NAME" --generate-notes
+        run: gh release create "v$VERSION" "$RUNNER_TEMP"/tarballs/*.tgz --target "$GITHUB_SHA" --title "v$VERSION" --generate-notes
+
+  update-game:
+    name: Open a pull request in the game
+    needs: [version, release]
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      # A fine-grained token for the game repository: contents and pull requests, read and write.
+      GAME_REPO_TOKEN: ${{ secrets.GAME_REPO_TOKEN }}
+    steps:
+      - name: Check for the token
+        id: token
+        run: |
+          if [ -z "$GAME_REPO_TOKEN" ]; then
+            echo "::warning::The GAME_REPO_TOKEN secret is not set, so no pull request was opened in $GAME_REPO."
+            exit 0
+          fi
+          echo "present=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v5
+        if: steps.token.outputs.present
+        with:
+          path: pipeline
+          fetch-depth: 0
+      - uses: actions/checkout@v5
+        if: steps.token.outputs.present
+        with:
+          repository: ${{ env.GAME_REPO }}
+          token: ${{ secrets.GAME_REPO_TOKEN }}
+          path: game
+      - uses: pnpm/action-setup@v4
+        if: steps.token.outputs.present
+        with:
+          package_json_file: game/package.json
+      - uses: actions/setup-node@v5
+        if: steps.token.outputs.present
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Describe what changed
+        if: steps.token.outputs.present
+        working-directory: pipeline
+        run: |
+          previous=$(git tag --list 'v*' --sort=-v:refname | grep -vx "v$VERSION" | head -1)
+          git show "$previous:$TOKENS_FILE" > "$RUNNER_TEMP/before.json"
+          {
+            echo "Adopts [pawprint-tokens v$VERSION](https://github.com/${{ github.repository }}/releases/tag/v$VERSION). Opened automatically by its release."
+            echo
+            echo "## Tokens changed since $previous"
+            echo
+            node scripts/token-diff.mjs "$RUNNER_TEMP/before.json" "$TOKENS_FILE"
+            echo
+            echo "Check the Vercel preview on this pull request before merging. If a token was renamed, CI fails here until the game's code uses the new name."
+          } > "$RUNNER_TEMP/body.md"
+      - name: Update the game and open the pull request
+        if: steps.token.outputs.present
+        working-directory: game
+        env:
+          GH_TOKEN: ${{ secrets.GAME_REPO_TOKEN }}
+        run: |
+          url="https://github.com/${{ github.repository }}/releases/download/v$VERSION"
+          pnpm add -Dw "@paws/tokens@$url/paws-tokens-$VERSION.tgz" "@paws/codemod@$url/paws-codemod-$VERSION.tgz"
+          pnpm --filter thousand-paws add "@paws/tokens@$url/paws-tokens-$VERSION.tgz" "@paws/ui@$url/paws-ui-$VERSION.tgz"
+          git config user.name "Amin"
+          git config user.email "92310987+aminchegini@users.noreply.github.com"
+          git checkout -b "tokens-v$VERSION"
+          git add -A
+          git commit -m "Use pawprint-tokens v$VERSION"
+          git push -u origin "tokens-v$VERSION"
+          gh pr create --base main --head "tokens-v$VERSION" --title "Use pawprint-tokens v$VERSION" --body-file "$RUNNER_TEMP/body.md"
