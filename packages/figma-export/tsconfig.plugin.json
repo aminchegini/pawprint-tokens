@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "types": ["@figma/plugin-typings"],
+    "noEmit": true
+  },
+  "include": ["src/code.ts", "src/serialize.ts"]
+}

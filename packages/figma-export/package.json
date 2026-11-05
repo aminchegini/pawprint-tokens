@@ -1,0 +1,35 @@
+{
+  "name": "@paws/figma-export",
+  "version": "0.1.0",
+  "description": "Figma plugin that exports local variable collections as figma.tokens.json, with modes and alias references.",
+  "license": "MIT",
+  "author": "Amin Chegini",
+  "type": "module",
+  "main": "./dist/serialize.js",
+  "types": "./dist/serialize.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/serialize.d.ts",
+      "default": "./dist/serialize.js"
+    },
+    "./manifest.json": "./manifest.json"
+  },
+  "files": [
+    "dist",
+    "manifest.json",
+    "src/ui.html"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node build.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.plugin.json --noEmit"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.142.0",
+    "@paws/tokens": "workspace:*",
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

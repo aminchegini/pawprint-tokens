@@ -1,0 +1,122 @@
+<!doctype html>
+<meta charset="utf-8" />
+<style>
+  body {
+    margin: 0;
+    padding: 12px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 8px;
+    height: 100vh;
+    box-sizing: border-box;
+    font: 12px/1.4 Inter, system-ui, sans-serif;
+    background: var(--figma-color-bg);
+    color: var(--figma-color-text);
+  }
+  label {
+    display: grid;
+    gap: 4px;
+    color: var(--figma-color-text-secondary);
+  }
+  input,
+  textarea {
+    padding: 6px 8px;
+    border: 1px solid var(--figma-color-border);
+    border-radius: 4px;
+    background: var(--figma-color-bg-secondary);
+    color: var(--figma-color-text);
+    font: inherit;
+  }
+  textarea {
+    resize: none;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 11px;
+  }
+  .row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  button {
+    padding: 6px 12px;
+    border: 1px solid var(--figma-color-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--figma-color-text);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.primary {
+    border-color: transparent;
+    background: var(--figma-color-bg-brand);
+    color: var(--figma-color-text-onbrand);
+  }
+  button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  #status {
+    margin: 0 0 0 auto;
+    color: var(--figma-color-text-secondary);
+  }
+  #status.error {
+    color: var(--figma-color-text-danger);
+  }
+</style>
+
+<label>
+  Figma file key (the part after /design/ in the file URL)
+  <input id="key" autocomplete="off" spellcheck="false" />
+</label>
+<div class="row">
+  <button id="export" class="primary">Export variables</button>
+  <p id="status" role="status"></p>
+</div>
+<textarea id="output" readonly aria-label="figma.tokens.json"></textarea>
+<div class="row">
+  <button id="copy" disabled>Copy</button>
+  <button id="download" disabled>Download figma.tokens.json</button>
+</div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const send = (pluginMessage) => parent.postMessage({ pluginMessage }, '*');
+  const status = (text, isError = false) => {
+    $('status').textContent = text;
+    $('status').classList.toggle('error', isError);
+  };
+
+  $('export').onclick = () => {
+    status('Reading variables');
+    send({ type: 'export', figmaFileKey: $('key').value });
+  };
+
+  $('copy').onclick = () => {
+    $('output').select();
+    document.execCommand('copy');
+    status('Copied');
+  };
+
+  $('download').onclick = () => {
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([$('output').value], { type: 'application/json' }));
+    link.download = 'figma.tokens.json';
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
+  onmessage = ({ data }) => {
+    const message = data.pluginMessage;
+    if (!message) return;
+    if (message.type === 'init') {
+      $('key').value = message.figmaFileKey;
+    } else if (message.type === 'result') {
+      $('output').value = message.json;
+      $('copy').disabled = $('download').disabled = false;
+      status('Exported');
+    } else if (message.type === 'error') {
+      status(message.message, true);
+    }
+  };
+</script>
