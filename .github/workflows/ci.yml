@@ -57,6 +57,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 26
+          # This job runs one script with no dependencies, so pnpm is not installed.
+          package-manager-cache: false
       # Runs the comparison only when the FIGMA_TOKEN secret and a non-empty
       # figmaFileKey exist; otherwise the script reports a skip and passes.
       - name: Fail when Figma changed after the last export
