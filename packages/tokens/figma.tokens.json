@@ -1,6 +1,6 @@
 {
   "$metadata": {
-    "exportedAt": "2026-11-05T15:31:47Z",
+    "exportedAt": "2026-11-05T15:41:17Z",
     "figmaFileKey": "FTrMG6oKwU8Arzt3QEru59"
   },
   "primitive": {
@@ -741,103 +741,6 @@
           "$value": "{primitive.font.size.30}"
         }
       }
-    }
-  },
-  "legacy": {
-    "pink": {
-      "$type": "color",
-      "$value": "{semantic.color.cabinet.body}",
-      "$deprecated": "Use color.cabinet.body"
-    },
-    "trim": {
-      "$type": "color",
-      "$value": "{semantic.color.accent.trim}",
-      "$deprecated": "Use color.accent.trim"
-    },
-    "trim-deep": {
-      "$type": "color",
-      "$value": "{semantic.color.accent.trim-pressed}",
-      "$deprecated": "Use color.accent.trim-pressed"
-    },
-    "mint": {
-      "$type": "color",
-      "$value": "{semantic.color.accent.highlight}",
-      "$deprecated": "Use color.accent.highlight"
-    },
-    "mint-deep": {
-      "$type": "color",
-      "$value": "{semantic.color.accent.highlight-pressed}",
-      "$deprecated": "Use color.accent.highlight-pressed"
-    },
-    "drop": {
-      "$type": "color",
-      "$value": "{semantic.color.action.primary}",
-      "$deprecated": "Use color.action.primary"
-    },
-    "drop-deep": {
-      "$type": "color",
-      "$value": "{semantic.color.action.primary-pressed}",
-      "$deprecated": "Use color.action.primary-pressed"
-    },
-    "plum": {
-      "$type": "color",
-      "$value": "{semantic.color.text.on-accent}",
-      "$deprecated": "Use color.text.on-accent"
-    },
-    "led": {
-      "$type": "color",
-      "$value": "{semantic.color.display.on}",
-      "$deprecated": "Use color.display.on"
-    },
-    "bg": {
-      "$type": "color",
-      "$value": "{semantic.color.surface.page}",
-      "$deprecated": "Use color.surface.page"
-    },
-    "panel": {
-      "$type": "color",
-      "$value": "{semantic.color.surface.panel}",
-      "$deprecated": "Use color.surface.panel"
-    },
-    "card": {
-      "$type": "color",
-      "$value": "{semantic.color.surface.card}",
-      "$deprecated": "Use color.surface.card"
-    },
-    "line": {
-      "$type": "color",
-      "$value": "{semantic.color.border.default}",
-      "$deprecated": "Use color.border.default"
-    },
-    "cream": {
-      "$type": "color",
-      "$value": "{semantic.color.text.default}",
-      "$deprecated": "Use color.text.default"
-    },
-    "muted": {
-      "$type": "color",
-      "$value": "{semantic.color.text.muted}",
-      "$deprecated": "Use color.text.muted"
-    },
-    "brand-candy": {
-      "$type": "color",
-      "$value": "{semantic.color.cabinet.body}",
-      "$deprecated": "Use color.cabinet.body"
-    },
-    "btn-red": {
-      "$type": "color",
-      "$value": "{semantic.color.action.primary}",
-      "$deprecated": "Use color.action.primary"
-    },
-    "btn-red-deep": {
-      "$type": "color",
-      "$value": "{semantic.color.action.primary-pressed}",
-      "$deprecated": "Use color.action.primary-pressed"
-    },
-    "shelf-wood": {
-      "$type": "color",
-      "$value": "{semantic.color.surface.shelf}",
-      "$deprecated": "Use color.surface.shelf"
     }
   }
 }

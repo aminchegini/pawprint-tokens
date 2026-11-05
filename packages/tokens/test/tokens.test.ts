@@ -35,27 +35,6 @@ const REQUIRED_SEMANTIC = [
   'color.prize.gold',
 ];
 
-// Plush Grab's :root values before the migration. The default mode must
-// reproduce them, so swapping its stylesheet for tokens.css changes nothing.
-const PLUSH_GRAB_ROOT: Record<string, string> = {
-  bg: '#0c0820',
-  panel: '#150e2b',
-  card: '#1f1538',
-  line: '#352652',
-  cream: '#fff6e8',
-  muted: '#b9acd3',
-  pink: '#ff3f94',
-  trim: '#ffd23f',
-  'trim-deep': '#b38a00',
-  mint: '#2ad4bd',
-  'mint-deep': '#139b8a',
-  drop: '#ff3b30',
-  'drop-deep': '#b3160e',
-  plum: '#2a0f3a',
-  led: '#ff9f1c',
-};
-const OTHER_APP_LEGACY = ['brand-candy', 'btn-red', 'shelf-wood'];
-
 /** Declarations of each rule in tokens.css, keyed by selector. */
 function blocks(): Map<string, Map<string, string>> {
   const out = new Map<string, Map<string, string>>();
@@ -69,17 +48,10 @@ function blocks(): Map<string, Map<string, string>> {
 
 describe('figma.tokens.json', () => {
   it('has the three layers and export metadata', () => {
-    expect(Object.keys(source)).toEqual(['$metadata', 'primitive', 'semantic', 'legacy']);
+    expect(Object.keys(source)).toEqual(['$metadata', 'primitive', 'semantic']);
     expect(Number.isNaN(Date.parse(source.$metadata.exportedAt))).toBe(false);
     // The file is exported from Figma, so it names the file it came from.
     expect(source.$metadata.figmaFileKey).toMatch(/^[0-9a-zA-Z]{22,}$/);
-  });
-
-  it('marks every legacy alias as deprecated and pointing at a semantic token', () => {
-    for (const [name, token] of Object.entries<any>(source.legacy)) {
-      expect(token.$value, name).toMatch(/^\{semantic\.[\w.-]+\}$/);
-      expect(token.$deprecated, name).toMatch(/^Use /);
-    }
   });
 });
 
@@ -184,14 +156,7 @@ describe('theme.css', () => {
 });
 
 describe('legacy aliases', () => {
-  it('cover both apps', () => {
-    expect(Object.keys(legacyMap)).toEqual(expect.arrayContaining([...Object.keys(PLUSH_GRAB_ROOT), ...OTHER_APP_LEGACY]));
-  });
-
-  it('resolve to the values Plush Grab ships today in the default mode', () => {
-    for (const [legacy, hex] of Object.entries(PLUSH_GRAB_ROOT)) {
-      const semantic = legacyMap[legacy] as keyof typeof tokens.candy;
-      expect(tokens.candy[semantic], legacy).toBe(hex);
-    }
+  it('are gone now that nothing uses them', () => {
+    expect(legacyMap).toEqual({});
   });
 });

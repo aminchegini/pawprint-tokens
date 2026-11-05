@@ -48,25 +48,6 @@
   --font-size-xl: 30px;
 
   /* Deprecated aliases. Migrate with @paws/codemod. */
-  --pink: var(--color-cabinet-body);
-  --trim: var(--color-accent-trim);
-  --trim-deep: var(--color-accent-trim-pressed);
-  --mint: var(--color-accent-highlight);
-  --mint-deep: var(--color-accent-highlight-pressed);
-  --drop: var(--color-action-primary);
-  --drop-deep: var(--color-action-primary-pressed);
-  --plum: var(--color-text-on-accent);
-  --led: var(--color-display-on);
-  --bg: var(--color-surface-page);
-  --panel: var(--color-surface-panel);
-  --card: var(--color-surface-card);
-  --line: var(--color-border-default);
-  --cream: var(--color-text-default);
-  --muted: var(--color-text-muted);
-  --brand-candy: var(--color-cabinet-body);
-  --btn-red: var(--color-action-primary);
-  --btn-red-deep: var(--color-action-primary-pressed);
-  --shelf-wood: var(--color-surface-shelf);
 }
 
 [data-skin="neon"] {
@@ -116,25 +97,6 @@
   --font-size-xl: 30px;
 
   /* Deprecated aliases. Migrate with @paws/codemod. */
-  --pink: var(--color-cabinet-body);
-  --trim: var(--color-accent-trim);
-  --trim-deep: var(--color-accent-trim-pressed);
-  --mint: var(--color-accent-highlight);
-  --mint-deep: var(--color-accent-highlight-pressed);
-  --drop: var(--color-action-primary);
-  --drop-deep: var(--color-action-primary-pressed);
-  --plum: var(--color-text-on-accent);
-  --led: var(--color-display-on);
-  --bg: var(--color-surface-page);
-  --panel: var(--color-surface-panel);
-  --card: var(--color-surface-card);
-  --line: var(--color-border-default);
-  --cream: var(--color-text-default);
-  --muted: var(--color-text-muted);
-  --brand-candy: var(--color-cabinet-body);
-  --btn-red: var(--color-action-primary);
-  --btn-red-deep: var(--color-action-primary-pressed);
-  --shelf-wood: var(--color-surface-shelf);
 }
 
 [data-skin="diner"] {
@@ -184,25 +146,6 @@
   --font-size-xl: 30px;
 
   /* Deprecated aliases. Migrate with @paws/codemod. */
-  --pink: var(--color-cabinet-body);
-  --trim: var(--color-accent-trim);
-  --trim-deep: var(--color-accent-trim-pressed);
-  --mint: var(--color-accent-highlight);
-  --mint-deep: var(--color-accent-highlight-pressed);
-  --drop: var(--color-action-primary);
-  --drop-deep: var(--color-action-primary-pressed);
-  --plum: var(--color-text-on-accent);
-  --led: var(--color-display-on);
-  --bg: var(--color-surface-page);
-  --panel: var(--color-surface-panel);
-  --card: var(--color-surface-card);
-  --line: var(--color-border-default);
-  --cream: var(--color-text-default);
-  --muted: var(--color-text-muted);
-  --brand-candy: var(--color-cabinet-body);
-  --btn-red: var(--color-action-primary);
-  --btn-red-deep: var(--color-action-primary-pressed);
-  --shelf-wood: var(--color-surface-shelf);
 }
 
 [data-skin="walnut"] {
@@ -252,23 +195,4 @@
   --font-size-xl: 30px;
 
   /* Deprecated aliases. Migrate with @paws/codemod. */
-  --pink: var(--color-cabinet-body);
-  --trim: var(--color-accent-trim);
-  --trim-deep: var(--color-accent-trim-pressed);
-  --mint: var(--color-accent-highlight);
-  --mint-deep: var(--color-accent-highlight-pressed);
-  --drop: var(--color-action-primary);
-  --drop-deep: var(--color-action-primary-pressed);
-  --plum: var(--color-text-on-accent);
-  --led: var(--color-display-on);
-  --bg: var(--color-surface-page);
-  --panel: var(--color-surface-panel);
-  --card: var(--color-surface-card);
-  --line: var(--color-border-default);
-  --cream: var(--color-text-default);
-  --muted: var(--color-text-muted);
-  --brand-candy: var(--color-cabinet-body);
-  --btn-red: var(--color-action-primary);
-  --btn-red-deep: var(--color-action-primary-pressed);
-  --shelf-wood: var(--color-surface-shelf);
 }

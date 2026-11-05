@@ -40,9 +40,16 @@ describe('parseMapping', () => {
 
   it('rejects anything that is not legacy name -> semantic name', () => {
     expect(() => parseMapping(['pink'])).toThrow(/JSON object/);
-    expect(() => parseMapping({})).toThrow(/empty/);
     expect(() => parseMapping({ pink: 'cabinet' })).toThrow(/Invalid semantic name/);
     expect(() => parseMapping({ '--pink': 'color.cabinet.body' })).toThrow(/Invalid legacy name/);
+  });
+});
+
+describe('an empty mapping', () => {
+  it('is valid, and leaves code unchanged', () => {
+    const mapping = parseMapping({});
+    expect(mapping).toEqual([]);
+    expect(transformCss('a { color: var(--pink); }', mapping).code).toBe('a { color: var(--pink); }');
   });
 });
 

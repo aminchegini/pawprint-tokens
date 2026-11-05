@@ -27,7 +27,7 @@ Tokens come in three layers, and each layer may only point at the one below it.
 | Semantic | `color.cabinet.body` = `{primitive.color.pink.500}` | Names a purpose. Always a reference to a primitive. May differ per mode. |
 | Component | `--button-bg: var(--color-action-primary)` | Lives in the component stylesheet. Always an alias of a semantic token. |
 
-A fourth group, `legacy`, holds deprecated aliases (`pink`, `trim`, `btn-red`, ...) that point at semantic tokens and carry a `$deprecated` note. They exist so an app can adopt the tokens first and rename later.
+An optional fourth group, `legacy`, holds deprecated aliases that point at semantic tokens and carry a `$deprecated` note, so an app can adopt the tokens first and rename later. It is empty today: the aliases Thousand Paws needed were removed in v0.2.0, once `paws-codemod count` read zero. Add a `Legacy` collection in Figma to migrate another app.
 
 Semantic tokens have four modes: `candy` (default), `neon`, `diner` and `walnut`. In `figma.tokens.json` a token's `$value` holds the default mode and `$extensions["paws.modes"]` holds one value per mode; tokens that are the same in every mode have only `$value`.
 
@@ -96,7 +96,7 @@ paws-codemod count --map node_modules/@paws/tokens/dist/legacy-map.json src
 
 Build the package, then in the Figma desktop app choose Plugins, Development, Import plugin from manifest and pick `packages/figma-export/manifest.json`. Run it, enter the file key, export, and save the result as `packages/tokens/figma.tokens.json`.
 
-The plugin expects three collections named `primitive`, `semantic` and `legacy`, with variable names using `/` for groups (`color/surface/page`). Aliases become `{group.path}` references. A description starting with "Deprecated" becomes `$deprecated`; aliases in the `legacy` collection get the note automatically.
+The plugin expects collections named `primitive` and `semantic`, plus `legacy` when an app is migrating, with variable names using `/` for groups (`color/surface/page`). Aliases become `{group.path}` references. A description starting with "Deprecated" becomes `$deprecated`; aliases in the `legacy` collection get the note automatically.
 
 The serialiser (`src/serialize.ts`) is a pure function over plain data and is the package's main export, so the same code can run against the Figma REST API.
 
