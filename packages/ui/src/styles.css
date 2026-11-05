@@ -1,0 +1,210 @@
+/* @paws/ui component styles.
+
+   Layering: a property reads a component variable (--button-bg), and a
+   component variable aliases a semantic token (--color-action-primary).
+   No raw colours and no primitive names: test/styles.test.ts enforces it.
+   Load @paws/tokens/tokens.css first; it defines the semantic tokens. */
+
+/* Button ------------------------------------------------------------------ */
+
+.paws-button {
+  --button-bg: var(--color-action-primary);
+  --button-bg-pressed: var(--color-action-primary-pressed);
+  --button-fg: var(--color-text-default);
+  --button-border: var(--color-action-primary);
+  --button-edge: var(--color-action-primary-pressed);
+  --button-focus-ring: var(--color-text-default);
+  --button-radius: var(--radius-pill);
+  --button-padding-block: var(--space-sm);
+  --button-padding-inline: var(--space-lg);
+  --button-gap: var(--space-sm);
+  --button-font-size: var(--font-size-md);
+  --button-press-depth: var(--space-2xs);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  border: 1px solid var(--button-border);
+  border-radius: var(--button-radius);
+  background: var(--button-bg);
+  color: var(--button-fg);
+  box-shadow: 0 var(--button-press-depth) 0 var(--button-edge);
+  font: inherit;
+  font-size: var(--button-font-size);
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+}
+
+.paws-button:focus-visible {
+  outline: 3px solid var(--button-focus-ring);
+  outline-offset: 2px;
+}
+
+.paws-button:active:not(:disabled) {
+  background: var(--button-bg-pressed);
+  box-shadow: none;
+  transform: translateY(var(--button-press-depth));
+}
+
+.paws-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.paws-button[data-variant="secondary"] {
+  --button-bg: var(--color-accent-highlight);
+  --button-bg-pressed: var(--color-accent-highlight-pressed);
+  --button-fg: var(--color-text-on-accent);
+  --button-border: var(--color-accent-highlight);
+  --button-edge: var(--color-accent-highlight-pressed);
+}
+
+.paws-button[data-variant="ghost"] {
+  --button-bg: transparent;
+  --button-bg-pressed: var(--color-surface-card);
+  --button-fg: var(--color-text-default);
+  --button-border: var(--color-border-default);
+  --button-edge: transparent;
+}
+
+.paws-button[data-size="sm"] {
+  --button-padding-block: var(--space-xs);
+  --button-padding-inline: var(--space-md);
+  --button-font-size: var(--font-size-sm);
+}
+
+/* Card -------------------------------------------------------------------- */
+
+.paws-card {
+  --card-bg: var(--color-surface-card);
+  --card-fg: var(--color-text-default);
+  --card-border: var(--color-border-default);
+  --card-radius: var(--radius-lg);
+  --card-padding: var(--space-lg);
+  --card-gap: var(--space-md);
+  --card-title-color: var(--color-accent-trim);
+  --card-title-size: var(--font-size-md);
+
+  display: grid;
+  gap: var(--card-gap);
+  padding: var(--card-padding);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  color: var(--card-fg);
+}
+
+.paws-card__title {
+  margin: 0;
+  color: var(--card-title-color);
+  font-size: var(--card-title-size);
+  letter-spacing: 0.04em;
+}
+
+/* Input ------------------------------------------------------------------- */
+
+.paws-input {
+  --input-bg: var(--color-surface-panel);
+  --input-fg: var(--color-text-default);
+  --input-placeholder: var(--color-text-muted);
+  --input-border: var(--color-border-default);
+  --input-border-focus: var(--color-accent-highlight);
+  --input-label-color: var(--color-text-muted);
+  --input-note-color: var(--color-text-muted);
+  --input-radius: var(--radius-md);
+  --input-padding-block: var(--space-sm);
+  --input-padding-inline: var(--space-md);
+  --input-gap: var(--space-xs);
+  --input-font-size: var(--font-size-md);
+  --input-label-size: var(--font-size-sm);
+
+  display: grid;
+  gap: var(--input-gap);
+}
+
+.paws-input[data-invalid] {
+  --input-border: var(--color-feedback-miss);
+  --input-border-focus: var(--color-feedback-miss);
+  --input-note-color: var(--color-feedback-miss);
+}
+
+.paws-input__label {
+  color: var(--input-label-color);
+  font-size: var(--input-label-size);
+  font-weight: 800;
+}
+
+.paws-input__field {
+  padding: var(--input-padding-block) var(--input-padding-inline);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  color: var(--input-fg);
+  font: inherit;
+  font-size: var(--input-font-size);
+}
+
+.paws-input__field::placeholder {
+  color: var(--input-placeholder);
+}
+
+.paws-input__field:focus-visible {
+  outline: 2px solid var(--input-border-focus);
+  outline-offset: 1px;
+}
+
+.paws-input__field:disabled {
+  opacity: 0.4;
+}
+
+.paws-input__note {
+  margin: 0;
+  color: var(--input-note-color);
+  font-size: var(--input-label-size);
+}
+
+/* Badge ------------------------------------------------------------------- */
+
+.paws-badge {
+  --badge-bg: var(--color-surface-panel);
+  --badge-fg: var(--color-text-muted);
+  --badge-border: var(--color-border-default);
+  --badge-radius: var(--radius-pill);
+  --badge-padding-block: var(--space-2xs);
+  --badge-padding-inline: var(--space-sm);
+  --badge-font-size: var(--font-size-xs);
+
+  display: inline-flex;
+  align-items: center;
+  padding: var(--badge-padding-block) var(--badge-padding-inline);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--badge-radius);
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  font-size: var(--badge-font-size);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paws-badge[data-tone="accent"] {
+  --badge-bg: var(--color-accent-trim);
+  --badge-fg: var(--color-text-on-accent);
+  --badge-border: var(--color-accent-trim);
+}
+
+.paws-badge[data-tone="win"] {
+  --badge-bg: var(--color-feedback-win);
+  --badge-fg: var(--color-text-on-accent);
+  --badge-border: var(--color-feedback-win);
+}
+
+.paws-badge[data-tone="miss"] {
+  --badge-bg: var(--color-feedback-miss);
+  --badge-fg: var(--color-text-default);
+  --badge-border: var(--color-feedback-miss);
+}
