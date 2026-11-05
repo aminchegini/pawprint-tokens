@@ -16,8 +16,8 @@ export declare const tokens: {
         readonly 'color.action.primary-pressed': '#b3160e';
         readonly 'color.accent.trim': '#ffd23f';
         readonly 'color.accent.trim-pressed': '#b38a00';
-        readonly 'color.accent.highlight': '#2ad4bd';
-        readonly 'color.accent.highlight-pressed': '#139b8a';
+        readonly 'color.accent.glow': '#2ad4bd';
+        readonly 'color.accent.glow-pressed': '#139b8a';
         readonly 'color.feedback.win': '#6fd36f';
         readonly 'color.feedback.miss': '#ff3b30';
         readonly 'color.display.on': '#ff9f1c';
@@ -62,8 +62,8 @@ export declare const tokens: {
         readonly 'color.action.primary-pressed': '#a01a8a';
         readonly 'color.accent.trim': '#ff5ce0';
         readonly 'color.accent.trim-pressed': '#a01a8a';
-        readonly 'color.accent.highlight': '#22e6ff';
-        readonly 'color.accent.highlight-pressed': '#0a93a8';
+        readonly 'color.accent.glow': '#22e6ff';
+        readonly 'color.accent.glow-pressed': '#0a93a8';
         readonly 'color.feedback.win': '#9be05a';
         readonly 'color.feedback.miss': '#ff5a4d';
         readonly 'color.display.on': '#22e6ff';
@@ -108,8 +108,8 @@ export declare const tokens: {
         readonly 'color.action.primary-pressed': '#9c1824';
         readonly 'color.accent.trim': '#f6ecd6';
         readonly 'color.accent.trim-pressed': '#b5a789';
-        readonly 'color.accent.highlight': '#4fb8a8';
-        readonly 'color.accent.highlight-pressed': '#2f8275';
+        readonly 'color.accent.glow': '#4fb8a8';
+        readonly 'color.accent.glow-pressed': '#2f8275';
         readonly 'color.feedback.win': '#6fd36f';
         readonly 'color.feedback.miss': '#ff5a4d';
         readonly 'color.display.on': '#ff5a4d';
@@ -154,8 +154,8 @@ export declare const tokens: {
         readonly 'color.action.primary-pressed': '#561217';
         readonly 'color.accent.trim': '#c39a4e';
         readonly 'color.accent.trim-pressed': '#7f6329';
-        readonly 'color.accent.highlight': '#e8c583';
-        readonly 'color.accent.highlight-pressed': '#a98c52';
+        readonly 'color.accent.glow': '#e8c583';
+        readonly 'color.accent.glow-pressed': '#a98c52';
         readonly 'color.feedback.win': '#3fbf8f';
         readonly 'color.feedback.miss': '#d8222f';
         readonly 'color.display.on': '#ffd9a0';

@@ -1,6 +1,6 @@
 {
   "$metadata": {
-    "exportedAt": "2026-11-05T15:41:17Z",
+    "exportedAt": "2026-11-05T15:47:37Z",
     "figmaFileKey": "FTrMG6oKwU8Arzt3QEru59"
   },
   "primitive": {
@@ -532,7 +532,7 @@
             }
           }
         },
-        "highlight": {
+        "glow": {
           "$type": "color",
           "$value": "{primitive.color.teal.400}",
           "$extensions": {
@@ -544,7 +544,7 @@
             }
           }
         },
-        "highlight-pressed": {
+        "glow-pressed": {
           "$type": "color",
           "$value": "{primitive.color.teal.600}",
           "$extensions": {

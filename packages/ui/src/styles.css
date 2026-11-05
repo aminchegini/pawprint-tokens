@@ -56,11 +56,11 @@
 }
 
 .paws-button[data-variant="secondary"] {
-  --button-bg: var(--color-accent-highlight);
-  --button-bg-pressed: var(--color-accent-highlight-pressed);
+  --button-bg: var(--color-accent-glow);
+  --button-bg-pressed: var(--color-accent-glow-pressed);
   --button-fg: var(--color-text-on-accent);
-  --button-border: var(--color-accent-highlight);
-  --button-edge: var(--color-accent-highlight-pressed);
+  --button-border: var(--color-accent-glow);
+  --button-edge: var(--color-accent-glow-pressed);
 }
 
 .paws-button[data-variant="ghost"] {
@@ -112,7 +112,7 @@
   --input-fg: var(--color-text-default);
   --input-placeholder: var(--color-text-muted);
   --input-border: var(--color-border-default);
-  --input-border-focus: var(--color-accent-highlight);
+  --input-border-focus: var(--color-accent-glow);
   --input-label-color: var(--color-text-muted);
   --input-note-color: var(--color-text-muted);
   --input-radius: var(--radius-md);
