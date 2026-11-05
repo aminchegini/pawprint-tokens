@@ -12,14 +12,14 @@ export declare const tokens: {
         readonly 'color.text.default': '#fff6e8';
         readonly 'color.text.muted': '#b9acd3';
         readonly 'color.text.on-accent': '#2a0f3a';
-        readonly 'color.action.primary': '#2563eb';
+        readonly 'color.action.primary': '#ff3b30';
         readonly 'color.action.primary-pressed': '#b3160e';
         readonly 'color.accent.trim': '#ffd23f';
         readonly 'color.accent.trim-pressed': '#b38a00';
         readonly 'color.accent.glow': '#2ad4bd';
         readonly 'color.accent.glow-pressed': '#139b8a';
         readonly 'color.feedback.win': '#6fd36f';
-        readonly 'color.feedback.miss': '#2563eb';
+        readonly 'color.feedback.miss': '#ff3b30';
         readonly 'color.display.on': '#ff9f1c';
         readonly 'color.display.off': '#3a2208';
         readonly 'color.cabinet.body': '#ff3f94';
@@ -30,7 +30,7 @@ export declare const tokens: {
         readonly 'color.prize.sky': '#58c4ff';
         readonly 'color.prize.grape': '#8f7bff';
         readonly 'color.prize.sun': '#ffd23f';
-        readonly 'color.prize.cherry': '#2563eb';
+        readonly 'color.prize.cherry': '#ff3b30';
         readonly 'color.prize.gold': '#c39a4e';
         readonly 'space.2xs': '2px';
         readonly 'space.xs': '4px';
@@ -76,7 +76,7 @@ export declare const tokens: {
         readonly 'color.prize.sky': '#58c4ff';
         readonly 'color.prize.grape': '#8f7bff';
         readonly 'color.prize.sun': '#ffd23f';
-        readonly 'color.prize.cherry': '#2563eb';
+        readonly 'color.prize.cherry': '#ff3b30';
         readonly 'color.prize.gold': '#c39a4e';
         readonly 'space.2xs': '2px';
         readonly 'space.xs': '4px';
@@ -122,7 +122,7 @@ export declare const tokens: {
         readonly 'color.prize.sky': '#58c4ff';
         readonly 'color.prize.grape': '#8f7bff';
         readonly 'color.prize.sun': '#ffd23f';
-        readonly 'color.prize.cherry': '#2563eb';
+        readonly 'color.prize.cherry': '#ff3b30';
         readonly 'color.prize.gold': '#c39a4e';
         readonly 'space.2xs': '2px';
         readonly 'space.xs': '4px';
@@ -168,7 +168,7 @@ export declare const tokens: {
         readonly 'color.prize.sky': '#58c4ff';
         readonly 'color.prize.grape': '#8f7bff';
         readonly 'color.prize.sun': '#ffd23f';
-        readonly 'color.prize.cherry': '#2563eb';
+        readonly 'color.prize.cherry': '#ff3b30';
         readonly 'color.prize.gold': '#c39a4e';
         readonly 'space.2xs': '2px';
         readonly 'space.xs': '4px';
