@@ -18,6 +18,7 @@ const SEMANTIC_NAME = /^[a-z][a-z0-9-]*(\.[a-z0-9][a-z0-9-]*)+$/i;
 /**
  * Validate a mapping file: a flat JSON object of legacy name -> semantic name.
  * Longer legacy names come first so "trim-deep" is tried before "trim".
+ * An empty mapping is valid: it is what a finished migration leaves behind.
  */
 export function parseMapping(json: unknown): Mapping {
   if (typeof json !== 'object' || json === null || Array.isArray(json)) {
@@ -38,6 +39,5 @@ export function parseMapping(json: unknown): Mapping {
       utility: dashed.replace(/^color-/, ''),
     });
   }
-  if (rules.length === 0) throw new Error('Mapping is empty');
   return rules.sort((a, b) => b.legacy.length - a.legacy.length || a.legacy.localeCompare(b.legacy));
 }
