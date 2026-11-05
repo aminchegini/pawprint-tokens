@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Install, build, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm typecheck
+      - run: pnpm test
+
+  drift:
+    name: Token drift
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Rebuild tokens
+        run: pnpm --filter @paws/tokens build
+      - name: Fail when the committed dist differs from the rebuild
+        run: |
+          # Intent-to-add makes files the build created show up in the diff too.
+          git add --intent-to-add packages/tokens/dist
+          git diff --exit-code packages/tokens/dist
+
+  freshness:
+    name: Figma freshness
+    needs: drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+      # Runs the comparison only when the FIGMA_TOKEN secret and a non-empty
+      # figmaFileKey exist; otherwise the script reports a skip and passes.
+      - name: Fail when Figma changed after the last export
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: node scripts/check-freshness.mjs
